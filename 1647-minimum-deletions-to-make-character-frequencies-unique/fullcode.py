@@ -21,7 +21,8 @@ class Solution:
         for i in range(len(s)):
             alphabet_dict[s[i]] += 1
 
-        alphabet_list: List[int] = self.delete_zero_value_in_dict(alphabet_dict)
+        self.delete_zero_value_in_dict(alphabet_dict)
+        alphabet_list: List[int] = self.dict_to_list(alphabet_dict)
 
         value = self.find_remove_count(alphabet_list)
         return value
@@ -31,14 +32,17 @@ class Solution:
             ascii_chr = chr(i)
             dic[ascii_chr] = 0
 
-    def delete_zero_value_in_dict(self, dic:dict) -> List[int]:
-        alphabet_list = []
+    def delete_zero_value_in_dict(self, dic:dict):
         for i in range(ASCII_SMALL_A, ASCII_SMALL_Z + 1):
             ascii_chr = chr(i)
-            if dic[ascii_chr] == 0:
+            if dic[ascii_chr] != 0:
                 continue
-            alphabet_list.append(dic[ascii_chr])
+            del(dic[ascii_chr])
 
+    def dict_to_list(self, dic:dict) -> List[int]:
+        alphabet_list = []
+        for key in dic.keys():
+            alphabet_list.append(dic[key])
         alphabet_list.sort(reverse=True)
         return alphabet_list
 
