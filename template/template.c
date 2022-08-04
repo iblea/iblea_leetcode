@@ -22,9 +22,19 @@ void solution()
 }
 
 
+int testcase1()
+{
+	solution();
+	return 0;
+}
 
 int main()
 {
-	solution();
+
+	if (testcase1() != 1) {
+		printf("test case 1 is failed\n");
+		exit(0);
+	}
+
 	return 0;
 }
