@@ -56,12 +56,12 @@ class UnitTest(unittest.TestCase):
         pass
 
     def test_case_normal_1(self):
-        res = self.solution.problem(input_data=[1])
+        res = self.solution.problem([1])
         self.assertEqual(res, 1)
 
     def test_case_normal_2(self):
-        res = self.solution.problem(input_data=[2])
-        self.assertEqual(res, 2)
+        res = self.solution.problem([2])
+        self.assertEqual(res, 1)
 
 
 
