@@ -6,7 +6,6 @@ Solution Note
 """
 
 # Leet Code Solution
-from bisect import bisect_right
 from bisect import bisect_left
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
@@ -23,3 +22,4 @@ class Solution:
             lis[index] = nums[i]
 
         return len(lis)
+
