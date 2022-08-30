@@ -9,7 +9,7 @@ n == matrix.length == matrix[i].length
 # Leet Code Solution
 from copy import deepcopy
 class Solution:
-    def rotate(self, matrix: List[List[int]]) -> None:
+    def rotate1(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
@@ -50,3 +50,40 @@ class Solution:
                 div -= 1
             else:
                 m += 1
+
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        
+        sqr_len = len(matrix)
+        n = sqr_len - 1
+        tmp = deepcopy(matrix)
+
+        for i in range(sqr_len):
+            for j in range(sqr_len):
+                matrix[j][n-i] = tmp[i][j]
+
+        # n,m
+        # 0,0 -> 0,3
+        # 0,1 -> 1,3
+        # 0,2 -> 2,3
+        # 0,3 -> 3,3
+
+        # 1,0 -> 0,2
+        # 1,1 -> 1,2
+        # 1,2 -> 2,2
+        # 1,3 -> 3,2
+
+        # 2,0 -> 0,1
+        # 2,1 -> 1,1
+        # 2,2 -> 2,1
+        # 2,3 -> 3,1
+
+        # 3,0 -> 0,0
+        # 3,1 -> 1,0
+        # 3,2 -> 2,0
+        # 3,3 -> 3,0
+
+        return
+
