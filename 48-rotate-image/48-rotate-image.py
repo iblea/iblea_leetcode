@@ -9,7 +9,7 @@ n == matrix.length == matrix[i].length
 # Leet Code Solution
 from copy import deepcopy
 class Solution:
-    def rotate1(self, matrix: List[List[int]]) -> None:
+    def rotate(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
@@ -51,7 +51,7 @@ class Solution:
             else:
                 m += 1
 
-    def rotate(self, matrix: List[List[int]]) -> None:
+    def rotate1(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
@@ -86,4 +86,5 @@ class Solution:
         # 3,3 -> 3,0
 
         return
+
 
