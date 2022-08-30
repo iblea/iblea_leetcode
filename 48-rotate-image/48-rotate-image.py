@@ -16,9 +16,6 @@ class Solution:
         sqr_len = len(matrix)
         sqr_end = sqr_len - 1
         div = sqr_len - 2
-        is_odd = True
-        if sqr_len % 2 == 0:
-            is_odd = False
 
         n = 0
         m = 0
@@ -26,7 +23,6 @@ class Solution:
         # 0 1 = 1 0
         # 1 2 = 2 1
 
-        # while n != div or m != div:
         while True:
             print(n, m)
             tmp = matrix[n][m]
