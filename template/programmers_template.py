@@ -8,7 +8,6 @@ Solution Note
 
 """
 
-# Leet Code Solution
 def solution(num: int):
     return 0
 
