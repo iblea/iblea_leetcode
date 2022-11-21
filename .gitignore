@@ -2,3 +2,8 @@
 
 # practice fullcode ignore
 practice_code/fullcode.py
+
+
+# python cache dir
+__pycache__/
+.pytest_cache/
