@@ -14,6 +14,11 @@ class Solution:
         return arg1 + arg2
 
 
+
+
+
+
+
 @pytest.mark.parametrize(
     'expect, args',
     [
@@ -21,7 +26,6 @@ class Solution:
     ])
 def test_case_normal(expect, args):
     solution = Solution();
-    print("test")
     assert expect == solution.problem(args[0], args[1])
 
 # pytest fullcode.py
