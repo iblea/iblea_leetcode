@@ -26,7 +26,9 @@ class Solution:
         return buy1
 
 
-    """_summary_
+    """
+	source : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/2571292/Optimized-C%2B%2B-or-O(n)-Time-O(1)-Space
+
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
         int buy1 = 0, sell1 = prices[n-1], buy2 = 0;
