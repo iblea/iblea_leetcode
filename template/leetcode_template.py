@@ -1,3 +1,5 @@
+#!/usr/local/bin/pytest
+
 #!/usr/bin/python3
 import pytest
 from typing import List
@@ -22,7 +24,8 @@ class Solution:
 @pytest.mark.parametrize(
     'expect, args',
     [
-        [3, (1, 2)]
+        [ 3, [ 1, 2 ] ],
+        # [ 4, [ 1, 2 ] ],
     ])
 def test_case_normal(expect, args):
     solution = Solution();
