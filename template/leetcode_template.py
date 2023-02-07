@@ -1,4 +1,4 @@
-#!/usr/local/bin/pytest
+#!/usr/local/bin/pytest -s
 
 #!/usr/bin/python3
 import pytest
