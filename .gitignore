@@ -1,7 +1,7 @@
 .vscode/
 
 # practice fullcode ignore
-practice_code/fullcode.py
+practice_code/fullcode.*
 
 
 # python cache dir
