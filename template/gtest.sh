@@ -19,7 +19,7 @@ if [ ! -f $fileName ]; then
     exit 1
 fi
 
-g++ -Wall -g \
+g++ -Wall -g --std=c++17 \
     -I $gtest_path/include \
     -L $gtest_path/lib \
     -o $binName $fileName \
@@ -28,6 +28,7 @@ g++ -Wall -g \
 if [ -f "$binName" ]; then
 	./$binName
 	rm -f $binName
+	rm -rf $binName.dSYM
 else
 	echo "compile error"
 fi
