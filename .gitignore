@@ -1,5 +1,8 @@
 .vscode/
 
+# vim tmp file
+.*.sw*
+
 # practice fullcode ignore
 practice_code/fullcode.*
 
