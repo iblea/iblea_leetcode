@@ -12,8 +12,11 @@ using namespace std;
 
 class Solution {
 public:
-	string template_function() { return "template_function"; };
+	string template_function();
 };
+
+string Solution::template_function() { return "template_function"; };
+
 
 
 #define CLASS_NAME gtest_template
