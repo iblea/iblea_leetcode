@@ -10,3 +10,7 @@ practice_code/fullcode.*
 # python cache dir
 __pycache__/
 .pytest_cache/
+
+# note
+ppt/
+
