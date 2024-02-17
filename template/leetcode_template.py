@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import unittest
 from typing import List
+from typing import Optional
 
 
 """
@@ -23,7 +24,7 @@ class UnitTest(unittest.TestCase):
     # 클래스 생성 시 1회 실행
     @classmethod
     def setUpClass(self):
-        self.solution = Solution();
+        self.solution = Solution()
 
     # 클래스 소멸 시 1회 실행
     @classmethod
