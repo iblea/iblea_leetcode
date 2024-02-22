@@ -14,3 +14,8 @@ __pycache__/
 # note
 ppt/
 
+# java
+*.class
+practice_code/Solution.java
+
+
