@@ -59,8 +59,7 @@ class Solution {
     }
 
     private void initialNoKnowSecretPerson(List<Integer> temp, int timeIndex) {
-        for (int i = 0; i < temp.size(); i++) {
-            int index = temp.get(i);
+        for (int index : temp) {
             if (isKnowSecret(index) == false) {
                 this.groups[index] = index;
             }
