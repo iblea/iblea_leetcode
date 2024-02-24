@@ -1,8 +1,9 @@
 class Solution {
 
-    int[] groups = new int[100000];
+    int[] groups;
 
     private void initializeGroups(int n, int firstPerson) {
+        groups = new int[n];
         for (int i = 0; i < n; i++) {
             groups[i] = i;
         }
@@ -18,7 +19,7 @@ class Solution {
         Arrays.sort(meetings, (a, b) -> Integer.compare(a[2], b[2]));
 
         int timeIndex = 0;
-        // System.err.println("ago   groups: " + Arrays.toString(groups));
+        // System.out.println("ago   groups: " + Arrays.toString(groups));
         while (timeIndex < meetings.length) {
             int currentTime = meetings[timeIndex][2];
             temp.clear();
@@ -38,7 +39,7 @@ class Solution {
                     groups[temp.get(j)] = temp.get(j);
                 }
             }
-            // System.err.println("after groups: " + Arrays.toString(groups));
+            // System.out.println("after groups: " + Arrays.toString(groups));
         }
 
         List<Integer> result = new ArrayList<>();
