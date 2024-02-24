@@ -1,0 +1,306 @@
+import java.util.*;
+
+class Meeting {
+    private HashSet<Integer> persons;
+
+    public Meeting() {
+        this.persons = new HashSet<>();
+    }
+
+    public boolean add(int person) {
+        return this.persons.add(person);
+    }
+
+    public void add(HashSet<Integer> persons) {
+        this.persons.addAll(persons);
+    }
+
+    public void add(Meeting persons) {
+        this.persons.addAll(persons.getAll());
+    }
+
+    public boolean contains(int person) {
+        return this.persons.contains(person);
+    }
+
+    public boolean contains(HashSet<Integer> persons) {
+        for (int person : persons) {
+            if (this.persons.contains(person)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public HashSet<Integer> getAll() {
+        return this.persons;
+    }
+}
+
+
+class Meetings {
+    private List<Meeting> meetingTimes;
+
+    public Meetings() {
+        this.meetingTimes = new ArrayList<>();
+    }
+
+    // 1 2, 4 5, 2 4
+    // 1 2 4 5
+    public void add(int person1, int person2) {
+        int mergeIndex1 = -1;
+        int mergeIndex2 = -1;
+        boolean is_merge = false;
+
+        for (int i= 0; i < this.meetingTimes.size(); i++) {
+            if (mergeIndex1 >= 0 && mergeIndex2 >= 0) {
+                is_merge = true;
+                break;
+            }
+            Meeting meeting = this.meetingTimes.get(i);
+            if (mergeIndex1 < 0 && meeting.contains(person1)) {
+                mergeIndex1 = i;
+                continue;
+            }
+            if (mergeIndex2 < 0 && meeting.contains(person2)) {
+                mergeIndex2 = i;
+                continue;
+            }
+        }
+        if (is_merge) {
+            Meeting merge1 = this.meetingTimes.get(mergeIndex1);
+            Meeting merge2 = this.meetingTimes.get(mergeIndex2);
+            if (mergeIndex1 < mergeIndex2) {
+                merge1.add(merge2);
+                this.meetingTimes.remove(mergeIndex2);
+            } else {
+                merge2.add(merge1);
+                this.meetingTimes.remove(mergeIndex1);
+            }
+            return ;
+        }
+
+        if (mergeIndex1 >= 0) {
+            Meeting merge1 = this.meetingTimes.get(mergeIndex1);
+            merge1.add(person2);
+            return ;
+        }
+        if (mergeIndex2 >= 0) {
+            Meeting merge2 = this.meetingTimes.get(mergeIndex2);
+            merge2.add(person1);
+            return ;
+        }
+
+        Meeting meeting = new Meeting();
+        meeting.add(person1);
+        meeting.add(person2);
+        this.meetingTimes.add(meeting);
+    }
+
+    public Meeting get(int person) {
+        for (Meeting meeting : this.meetingTimes) {
+            if (meeting.contains(person)) {
+                return meeting;
+            }
+        }
+        return null;
+    }
+
+    public List<Meeting> getAll() {
+        return this.meetingTimes;
+    }
+
+    public List<Meeting> getMeetings(HashSet<Integer> persons) {
+        List<Meeting> meetings = new ArrayList<>();
+        for (Meeting meeting : this.meetingTimes) {
+            if (meeting.contains(persons)) {
+                meetings.add(meeting);
+            }
+        }
+        return meetings;
+    }
+}
+
+class MeetingTimes {
+    private HashMap<Integer, Meetings> meetingTimes;
+    private int n;
+
+    public MeetingTimes(int n) {
+        this.meetingTimes = new HashMap<>();
+        this.n = n - 1;
+    }
+
+    public void add(int time, int person1, int person2) {
+        if (n < person1 || n < person2) {
+            return ;
+        }
+        if (this.meetingTimes.containsKey(time)) {
+            this.meetingTimes.get(time).add(person1, person2);
+            return ;
+        }
+        Meetings meetings = new Meetings();
+        meetings.add(person1, person2);
+        this.meetingTimes.put(time, meetings);
+        return ;
+    }
+
+    public List<Integer> getAllTime() {
+        List<Integer> times = new ArrayList<>(this.meetingTimes.keySet());
+        Collections.sort(times);
+        return times;
+    }
+
+    public Meetings getPersonInTime(int time) {
+        return this.meetingTimes.get(time);
+    }
+}
+
+class KnowSecretPerson {
+    private HashSet<Integer> knownPerson;
+
+    public KnowSecretPerson() {
+        this.knownPerson = new HashSet<>();
+    }
+
+    public KnowSecretPerson(int person) {
+        this.knownPerson = new HashSet<>();
+        this.knownPerson.add(0);
+        this.knownPerson.add(person);
+    }
+
+    public boolean add(int person) {
+        return this.knownPerson.add(person);
+    }
+
+    public void add(HashSet<Integer> persons) {
+        this.knownPerson.addAll(persons);
+    }
+
+    public boolean contains(int person) {
+        return this.knownPerson.contains(person);
+    }
+
+    public boolean contains(HashSet<Integer> persons) {
+        for (int person : persons) {
+            if (this.knownPerson.contains(person)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public HashSet<Integer> getAll() {
+        return this.knownPerson;
+    }
+
+    public List<Integer> getAlltoList() {
+        List<Integer> list = new ArrayList<>(this.knownPerson);
+        Collections.sort(list);
+        return list;
+    }
+
+}
+
+class Solution {
+    private KnowSecretPerson knownPerson;
+    private MeetingTimes meetingTimes;
+
+    public List<Integer> findAllPeople(int n, int[][] meetings, int firstPerson) {
+        this.knownPerson = new KnowSecretPerson(firstPerson);
+        this.meetingTimes = new MeetingTimes(n);
+
+        for (int [] meeting : meetings) {
+            int shareSecretPerson = meeting[0];
+            int hearSecretPerson = meeting[1];
+            int meetingTime = meeting[2];
+
+            meetingTimes.add(meetingTime, shareSecretPerson, hearSecretPerson);
+        }
+
+        List<Integer> times = this.meetingTimes.getAllTime();
+        for (int time : times) {
+            Meetings meetsInTime = this.meetingTimes.getPersonInTime(time);
+
+            List<Meeting> persons = meetsInTime.getMeetings(this.knownPerson.getAll());
+
+            for (Meeting person : persons) {
+                this.knownPerson.add(person.getAll());
+            }
+        }
+        return this.knownPerson.getAlltoList();
+    }
+
+
+
+
+    public static void main(String[] args) {
+        testcase1();
+        testcase2();
+        testcase3();
+        testcase4();
+    }
+
+    public static void checkAnswer(List<Integer> result, List<Integer> answer) {
+        System.out.println("Result: " + result.toString());
+        System.out.println("Answer: " + answer.toString());
+
+        if (result.equals(answer)) {
+            System.out.println("Testcase1 is Passed!");
+        } else {
+            System.out.println("@@@@@ Testcase1 is Failed! @@@@@");
+        }
+        System.out.println();
+    }
+
+    public static void testcase1() {
+        int n = 6;
+        int[][] meetings = {{1,2,5},{2,3,8},{1,5,10}};
+        int firstPerson = 1;
+
+        List<Integer> result = new Solution().findAllPeople(n, meetings, firstPerson);
+        List<Integer> answer = new ArrayList<>(
+            Arrays.asList(0, 1, 2, 3, 5)
+        );
+
+        checkAnswer(result, answer);
+    }
+
+    public static void testcase2() {
+        int n = 4;
+        int[][] meetings = { { 3,1,3 },{ 1,2,2 },{ 0,3,3 } };
+        int firstPerson = 3;
+
+        List<Integer> result = new Solution().findAllPeople(n, meetings, firstPerson);
+        List<Integer> answer = new ArrayList<>(
+            Arrays.asList(0, 1, 3)
+        );
+
+        checkAnswer(result, answer);
+    }
+
+    public static void testcase3() {
+        int n = 5;
+        int[][] meetings = { { 3,4,2 },{ 1,2,1 },{ 2,3,1 } };
+        int firstPerson = 1;
+
+        List<Integer> result = new Solution().findAllPeople(n, meetings, firstPerson);
+        List<Integer> answer = new ArrayList<>(
+            Arrays.asList( 0,1,2,3,4 )
+        );
+
+        checkAnswer(result, answer);
+    }
+
+    public static void testcase4() {
+        int n = 6;
+        int[][] meetings = { { 0,2,1 },{ 1,3,1 },{ 4,5,1 } };
+        int firstPerson = 1;
+
+        List<Integer> result = new Solution().findAllPeople(n, meetings, firstPerson);
+        List<Integer> answer = new ArrayList<>(
+            Arrays.asList( 0,1,2,3 )
+        );
+        checkAnswer(result, answer);
+    }
+
+}
