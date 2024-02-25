@@ -21,7 +21,7 @@ class LeetCodeMain {
         if (true) {
             System.out.println("Testcase is Passed!");
         } else {
-            System.out.println("@@@@@@@@@@ Testcase is Failed! @@@@@@@@@@");
+            System.err.println("@@@@@@@@@@ Testcase is Failed! @@@@@@@@@@");
         }
         System.out.println();
 
