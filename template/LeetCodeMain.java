@@ -1,11 +1,16 @@
 // import java.util.*;
 
 class Solution {
+    public void print() {
+        System.out.println("Hello World!");
+    }
+}
 
 
 
 
 
+class LeetcodeMain {
     public static void main(String[] args) {
         testcase1();
     }

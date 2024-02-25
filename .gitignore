@@ -17,5 +17,6 @@ ppt/
 # java
 *.class
 practice_code/Solution.java
+practice_code/LeetCodeMain.java
 
 
