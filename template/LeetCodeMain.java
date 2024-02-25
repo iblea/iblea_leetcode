@@ -10,7 +10,7 @@ class Solution {
 
 
 
-class LeetcodeMain {
+class LeetCodeMain {
     public static void main(String[] args) {
         testcase1();
     }
