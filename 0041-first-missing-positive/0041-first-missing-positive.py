@@ -2,6 +2,7 @@ class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
         for i in range(len(nums)):
 
+            # normal case or already sorted.
             if nums[i] == i + 1:
                 continue
 
@@ -17,26 +18,28 @@ class Solution:
             # nums[i - 1] = i
             # ...
 
+            self.changeIndex(nums, i)
+        for i in range(len(nums)):
+            if nums[i] != i + 1:
+                return i + 1
+        return len(nums) + 1
+
+    def changeIndex(self, nums: List[int], i: int) -> None:
+        while True:
             # i = 1
             # [3, 4, -1, 1]
             # [-1, 4, 3, 1]
             # [1, 3, -1, 4]
             # [1, -1, 3, 4]
 
-            j: int = i
-            while True:
-                tmpValue: int = nums[nums[j] - 1]
-                nums[nums[j] - 1] = nums[j]
-                if nums[j] == tmpValue:
-                    break
-                if tmpValue <= 0 or tmpValue > len(nums):
-                    nums[j] = -1
-                    break
-                # value는 또다른 인덱스이다.
-                nums[j] = tmpValue
-
-        for i in range(len(nums)):
-            if nums[i] != i + 1:
-                return i + 1
-        return len(nums) + 1
+            agovalue: int = nums[i]
+            tmpValue: int = nums[agovalue - 1]
+            nums[agovalue - 1] = nums[i]
+            if nums[i] == tmpValue:
+                break
+            if tmpValue <= 0 or tmpValue > len(nums):
+                nums[i] = -1
+                break
+            # value는 또다른 인덱스이다.
+            nums[i] = tmpValue
 
