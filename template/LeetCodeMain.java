@@ -16,20 +16,22 @@ class LeetCodeMain {
     }
 
     public static void checkAnswer() {
-        System.out.println("Hello checkAnswer!");
 
         if (true) {
             System.out.println("Testcase is Passed!");
+            System.out.println();
         } else {
+
             System.err.println("@@@@@@@@@@ Testcase is Failed! @@@@@@@@@@");
+            System.err.println("failed testcase : " + Thread.currentThread().getStackTrace()[2].getMethodName());
+            System.out.println();
         }
-        System.out.println();
 
     }
 
     public static void testcase1() {
 
-        System.out.println("Hello TestCase1!");
         checkAnswer();
+
     }
 }
