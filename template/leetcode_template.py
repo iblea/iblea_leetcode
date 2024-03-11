@@ -24,7 +24,7 @@ class UnitTest(unittest.TestCase):
     # 클래스 생성 시 1회 실행
     @classmethod
     def setUpClass(self):
-        self.solution = Solution()
+        pass
 
     # 클래스 소멸 시 1회 실행
     @classmethod
@@ -33,7 +33,7 @@ class UnitTest(unittest.TestCase):
 
     # 테스트 케이스 전 실행
     def setUp(self):
-        pass
+        self.solution = Solution()
 
     # 테스트 케이스 후 실행
     def tearDown(self):
@@ -48,4 +48,3 @@ class UnitTest(unittest.TestCase):
 if __name__ == "__main__":
     # 스크립트 실행 시, 해당 부분 동작
     unittest.main(verbosity=0)
-    pass
