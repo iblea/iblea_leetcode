@@ -17,6 +17,12 @@ class Solution:
             # nums[i - 1] = i
             # ...
 
+            # i = 1
+            # [3, 4, -1, 1]
+            # [-1, 4, 3, 1]
+            # [1, 3, -1, 4]
+            # [1, -1, 3, 4]
+
             j: int = i
             while True:
                 tmpValue: int = nums[nums[j] - 1]
@@ -24,6 +30,7 @@ class Solution:
                 if nums[j] == tmpValue:
                     break
                 if tmpValue <= 0 or tmpValue > len(nums):
+                    nums[j] = -1
                     break
                 # value는 또다른 인덱스이다.
                 nums[j] = tmpValue
