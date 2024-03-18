@@ -1,6 +1,5 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        nums, rotate = self.sortArray(nums)
 
         left: int  = 0
         right: int = len(nums) - 1
@@ -8,22 +7,28 @@ class Solution:
         while left <= right:
             mid: int = (left + right) // 2 # 3.2 -> 3
             if nums[mid] == target:
-                originIdx = (mid + rotate) % len(nums)
-                return originIdx
+                return mid
 
             # 타겟이 중간값보다 더 크면 오른쪽을 검색
-            if nums[mid] < target:
-                left = mid + 1
+            # target = 8
+            # 4 5 7 8 9 10 1 2 3
+            #     *   ^
+            #     ^ * |
+            # target = 10
+            # 4 5 7 8 9 10 1 2 3
+            #         ^    *
+            #         |  * ^
+            # [2, 1] 1 -> left = 0, mid = (0+1)//2 = 0
+            if nums[left] <= nums[mid]:
+                if nums[left] <= target < nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
             # 타겟이 중간값보다 더 작으면 왼쪽 검색
             else:
-                right = mid - 1
+                if nums[mid] < target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
         return -1
 
-    def sortArray(self, nums: List[int]) -> any:
-        rotate = 0
-        while nums[0] > nums[-1]:
-            num = nums.pop(0)
-            nums.append(num)
-            rotate += 1
-
-        return nums, rotate
