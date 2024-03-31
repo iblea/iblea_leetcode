@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import unittest
-from typing import *
+from typing import Optional, List
 
 
 null = None
@@ -14,7 +14,24 @@ class TreeNode:
         self.right = right
 
 
-def make_node(treelist: List[any]) -> TreeNode:
+"""
+Solution Note
+
+"""
+
+# Leet Code Solution
+
+class Solution:
+    def problem(self, root: Optional[TreeNode]) -> list:
+        print("Hello World!")
+        return []
+
+
+
+
+
+
+def make_node(treelist: List[any]) -> Optional[TreeNode]:
     if len(treelist) == 0:
         return None
 
@@ -54,7 +71,7 @@ def make_node(treelist: List[any]) -> TreeNode:
 def make_list(root: TreeNode) -> List[any]:
     if root is None:
         return []
-    
+
     result: List[any] = [ root.val ]
     queue: List[TreeNode] = [ ]
 
@@ -81,26 +98,13 @@ def make_list(root: TreeNode) -> List[any]:
     return result
 
 
-"""
-Solution Note
-
-"""
-
-# Leet Code Solution
-
-class Solution:
-    def problem(self, root: Optional[TreeNode]) -> None:
-        print("Hello World!")
-        return
-
-
 # python unit test
 class UnitTest(unittest.TestCase):
 
     # 클래스 생성 시 1회 실행
     @classmethod
     def setUpClass(self):
-        self.solution = Solution();
+        pass
 
     # 클래스 소멸 시 1회 실행
     @classmethod
@@ -109,7 +113,7 @@ class UnitTest(unittest.TestCase):
 
     # 테스트 케이스 전 실행
     def setUp(self):
-        pass
+        self.solution = Solution()
 
     # 테스트 케이스 후 실행
     def tearDown(self):
@@ -119,14 +123,13 @@ class UnitTest(unittest.TestCase):
         lst = [1,None,1,None,1]
         # list to TreeNode
         root = make_node(lst)
-
         # TreeNode to list
         answer = make_list(root)
 
         print(lst)
         print(answer)
 
-        self.solution.problem(root)
+        # self.solution.problem(root)
         self.assertEqual(answer, lst)
 
 
@@ -135,4 +138,3 @@ class UnitTest(unittest.TestCase):
 if __name__ == "__main__":
     # 스크립트 실행 시, 해당 부분 동작
     unittest.main(verbosity=0)
-    pass
