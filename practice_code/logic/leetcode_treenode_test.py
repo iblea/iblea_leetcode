@@ -126,12 +126,17 @@ class UnitTest(unittest.TestCase):
         # TreeNode to list
         answer = make_list(root)
 
-        print(lst)
-        print(answer)
+        # print(lst)
+        # print(answer)
 
         # self.solution.problem(root)
         self.assertEqual(answer, lst)
 
+    def test_case_1(self):
+        root = None
+        answer = []
+        result = self.solution.problem(root)
+        self.assertEqual(result, answer)
 
 
 
