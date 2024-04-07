@@ -5,6 +5,11 @@ from typing import Optional, List
 
 null = None
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 # Leet Code Solution
 # Definition for a binary tree node.
 class TreeNode:
@@ -27,6 +32,32 @@ class Solution:
         return []
 
 
+
+
+
+
+def make_linked_list(lst: List[any]) -> Optional[ListNode]:
+    if lst is None or lst is []:
+        return None
+
+    linkedlist = ListNode(lst[0])
+    traversal = linkedlist
+    for i in range(1, len(lst)):
+        traversal.next = ListNode(lst[i])
+        traversal = traversal.next
+
+    return linkedlist
+
+def make_array_list(linked_list: Optional[ListNode]) -> List:
+    if linked_list is None:
+        return []
+
+    lst = []
+    traversal = linked_list
+    while traversal is not None:
+        lst.append(traversal.val)
+        traversal = traversal.next
+    return lst
 
 
 
@@ -118,6 +149,28 @@ class UnitTest(unittest.TestCase):
     # 테스트 케이스 후 실행
     def tearDown(self):
         pass
+
+    def test_make_linked_list(self):
+        origin_lst = [1, 2, 3]
+        origin_linked_list = ListNode(1)
+        origin_linked_list.next = ListNode(2)
+        origin_linked_list.next.next = ListNode(3)
+        lnk_list = make_linked_list(origin_lst)
+        arr_list = make_array_list(origin_linked_list)
+
+        self.assertEqual(origin_lst, arr_list)
+        answer_1 = []
+        answer_2 = []
+        traversal = origin_linked_list
+        while traversal is not None:
+            answer_1.append(traversal.val)
+            traversal = traversal.next
+
+        traversal = lnk_list
+        while traversal is not None:
+            answer_2.append(traversal.val)
+            traversal = traversal.next
+        self.assertEqual(answer_1, answer_2)
 
     def test_make_list(self):
         lst = [1,None,1,None,1]
