@@ -16,12 +16,12 @@ class Solution:
                     return None
 
             left_list = [ lst[i] for i in range(len(lst)) ]
-            right_list = [ lst[i] for i in range(len(lst)) ]
+            # right_list = [ lst[i] for i in range(len(lst)) ]
             traversal(root.left, left_list)
-            traversal(root.right, right_list)
+            # traversal(root.right, right_list)
 
             # traversal(root.left, lst)
-            # traversal(root.right, lst)
+            traversal(root.right, lst)
 
 
 
