@@ -15,7 +15,7 @@ public:
     string solution();
 };
 
-string solution() { return "template_function"; };
+string Solution::solution() { return "template_function"; };
 
 
 
@@ -55,4 +55,10 @@ protected:
 TEST_F(CLASS_NAME, __LINE__)
 {
 	EXPECT_EQ(this->s.solution(), "template_function");
+}
+
+int main(int argc, char **argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
