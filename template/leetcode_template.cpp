@@ -12,10 +12,10 @@ using namespace std;
 
 class Solution {
 public:
-	string template_function();
+    string solution();
 };
 
-string Solution::template_function() { return "template_function"; };
+string solution() { return "template_function"; };
 
 
 
@@ -54,5 +54,5 @@ protected:
 
 TEST_F(CLASS_NAME, __LINE__)
 {
-	EXPECT_EQ(this->s.template_function(), "template_function");
+	EXPECT_EQ(this->s.solution(), "template_function");
 }
