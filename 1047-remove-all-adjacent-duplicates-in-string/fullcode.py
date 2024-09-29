@@ -67,6 +67,10 @@ class UnitTest(unittest.TestCase):
         res = self.solution.removeDuplicates("aaaaaaaa")
         self.assertEqual(res, "")
 
+    def test_case_normal_5(self):
+        res = self.solution.removeDuplicates("codility")
+        self.assertEqual(res, "a")
+
 
 
 
