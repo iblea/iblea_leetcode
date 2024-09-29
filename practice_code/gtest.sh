@@ -26,11 +26,14 @@ fi
 #     -std=c++17 -pthread \
 #     -lgtest -lgtest_main -lpthread
 
+# g++
+# /opt/homebrew/bin/g++-13
+
 clang++ -Wall -g \
 	-I $gtest_path/include \
 	-L $gtest_path/lib \
+	-std=c++17 \
 	-o $binName $fileName \
-	-std=c++17 -pthread \
 	-lgtest -lgtest_main -lpthread
 
 if [ -f "$binName" ]; then
