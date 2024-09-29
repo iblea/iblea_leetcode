@@ -19,19 +19,19 @@ if [ ! -f $fileName ]; then
     exit 1
 fi
 
-g++ -Wall -g \
-    -I $gtest_path/include \
-    -L $gtest_path/lib \
-    -o $binName $fileName \
-    -std=c++17 -pthread \
-    -lgtest -lgtest_main -lpthread
+# g++ -Wall -g \
+#     -I $gtest_path/include \
+#     -L $gtest_path/lib \
+#     -o $binName $fileName \
+#     -std=c++17 -pthread \
+#     -lgtest -lgtest_main -lpthread
 
-# clang++ -Wall -g \
-# 	-I $gtest_path/include \
-# 	-L $gtest_path/lib \
-# 	-o $binName $fileName \
-# 	-std=c++17 -pthread \
-# 	-lgtest -lgtest_main -lpthread
+clang++ -Wall -g \
+	-I $gtest_path/include \
+	-L $gtest_path/lib \
+	-o $binName $fileName \
+	-std=c++17 -pthread \
+	-lgtest -lgtest_main -lpthread
 
 if [ -f "$binName" ]; then
 	./$binName

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 binName=ouput
-g++ -Wall -g -o $binName fullcode.cpp
+clang++ --std=c++17 -Wall -g "fullcode.cpp" -o "${binName}"
 if [ -f "$binName" ]; then
 	./$binName
 	rm -f $binName
