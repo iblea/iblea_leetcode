@@ -44,6 +44,37 @@ class Solution:
         return False
 
 
+    def canArrange_time_limit_exceed(self, arr: List[int], k: int) -> bool:
+
+        if k == 1:
+            return True
+
+        # arr = [1, 1, 6, 13,], k = 7
+        keys = []
+        matched = 0
+        true_val = len(arr) // 2
+
+        # num = 1
+        for num in arr:
+            found = False
+
+            for key in keys:
+                if (key + num) % k == 0:
+                    keys.remove(key)
+                    found = True
+                    matched += 1
+                    break
+
+            if found == False:
+                keys.append(num)
+
+            if len(keys) > true_val:
+                return False
+
+        if matched == true_val:
+            return True
+        return False
+
 
 
 
