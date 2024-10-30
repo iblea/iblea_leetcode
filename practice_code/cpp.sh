@@ -8,3 +8,5 @@ if [ -f "$binName" ]; then
 else
 	echo "compile error"
 fi
+
+echo "test"
