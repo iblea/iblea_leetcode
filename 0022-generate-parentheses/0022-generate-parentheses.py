@@ -1,16 +1,22 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        answer: List[str] = []
+        answer = []
 
-        def func(s, l, r):
-            if l == 0 and r == 0:
-                answer.append(s)
-                return
+        stack = [ (n, n, "") ]
+        while len(stack) > 0:
 
-            if l > 0:
-                func(s + "(", l - 1, r)
-            if r > 0 and l < r:
-                func(s + ")", l, r - 1)
+            curr = stack.pop(0)
+            open = curr[0]
+            close = curr[1]
+            brackets = curr[2]
 
-        func("", n, n)
+            if open == 0 and close == 0:
+                answer.append(brackets)
+                continue
+
+            if open > 0:
+                stack.append((open - 1, close, brackets + "("))
+            if open < close:
+                stack.append((open, close - 1, brackets + ")"))
+
         return answer
