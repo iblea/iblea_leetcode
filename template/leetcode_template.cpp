@@ -1,7 +1,10 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
+#include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
