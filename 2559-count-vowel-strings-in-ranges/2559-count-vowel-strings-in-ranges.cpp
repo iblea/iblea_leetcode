@@ -9,27 +9,26 @@ public:
         alphabet['o' - 'a'] = true;
         alphabet['u' - 'a'] = true;
 
-        // stat: 0 - false, 1 - true, -1 - not visited
-        vector<int> cache(words.size(), -1);
-        vector<int> answer;
+        vector<int> prefix_sum(words.size() + 1, 0);
+        prefix_sum[0] = alphabet[words[0][0] - 'a'] && alphabet[words[0][words[0].length() - 1] - 'a'];
+        for (int i = 1; i < words.size(); i++) {
+            prefix_sum[i] = prefix_sum[i - 1];
+            prefix_sum[i] += (alphabet[words[i][0] - 'a'] && alphabet[words[i][words[i].length() - 1] - 'a']);
+        }
 
-        for (vector<int> query : queries) {
-            int li = query[0];
-            int ri = query[1];
-            int count = 0;
-            for (int i = li; i <= ri; i++) {
-                if (cache[i] == 1) {
-                    count++;
-                    continue;
-                }
-                if (cache[i] == 0) {
-                    continue;
-                }
-                cache[i] = alphabet[words[i][0] - 'a'] && alphabet[words[i][words[i].length() - 1] - 'a'];
-                count += cache[i];
+        vector<int> answer(queries.size(), 0);
+
+        for (int i = 0; i < queries.size(); i++) {
+            int li = queries[i][0];
+            int ri = queries[i][1];
+            if (li == 0) {
+                answer[i] = prefix_sum[ri];
+            } else {
+                answer[i] = prefix_sum[ri] - prefix_sum[li - 1];
             }
-            answer.push_back(count);
         }
         return answer;
     }
+
 };
+
