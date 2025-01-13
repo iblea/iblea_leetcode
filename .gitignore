@@ -5,6 +5,7 @@
 
 # practice fullcode ignore
 practice_code/fullcode.*
+practice_code/todo.md
 
 
 # python cache dir
@@ -20,3 +21,5 @@ practice_code/Solution.java
 practice_code/LeetCodeMain.java
 
 
+.DS_Store
+**/.DS_Store
