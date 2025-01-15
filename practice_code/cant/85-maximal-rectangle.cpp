@@ -102,13 +102,13 @@ public:
         int left[sizeX], right[sizeX], height[sizeX];
         fill_n(left,sizeX,0); fill_n(right,sizeX,sizeX); fill_n(height,sizeX,0);
         int maxA = 0;
-        for (int i = 0; i < sizeY; i++) {
-            for (int j = 0; j < sizeX; j++) {
-                cout << matrix[i][j] << " ";
-            }
-            cout << endl;
-        }
-        cout << endl;
+        // for (int i = 0; i < sizeY; i++) {
+        //     for (int j = 0; j < sizeX; j++) {
+        //         cout << matrix[i][j] << " ";
+        //     }
+        //     cout << endl;
+        // }
+        // cout << endl;
         for (int i = 0; i < sizeY; i++) {
             int cur_left = 0, cur_right = sizeX;
             for (int j = 0; j < sizeX; j++) { // compute height (can do this from either side)
@@ -134,6 +134,9 @@ public:
                     right[j] = sizeX;
                     cur_right = j;
                 }
+            }
+            for (int j = 0; j < sizeX; j++) {
+                maxA = max(maxA, (right[j] - left[j]) * height[j]);
             }
         }
         return maxA;
