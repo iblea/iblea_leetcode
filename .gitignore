@@ -6,6 +6,8 @@
 # practice fullcode ignore
 practice_code/fullcode.*
 practice_code/todo.md
+practice_code/output_gtest
+practice_code/output_gtest.dSYM/
 
 
 # python cache dir
