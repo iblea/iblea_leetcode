@@ -1,0 +1,45 @@
+{
+	// IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+	// 기존 특성에 대한 설명을 보려면 가리킵니다.
+	// 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+	"version": "0.2.0",
+	"configurations": [
+		{
+			// sudo DevToolsSecurity --enable
+			"name": "practice codeLLDB",
+			"type": "lldb",
+			"request": "launch",
+			"program": "${workspaceFolder:leetcode}/practice_code/output_gtest",
+			"breakpointMode": "file",
+			"args": [],
+			"preLaunchTask": "prelaunch_leetcode",
+			"terminal": "integrated",
+
+		},
+		{
+			// MacOS에서는 gdb 안됨.
+			// LLDB 사용해도 arm64 아키텍쳐 디버깅 안됨.
+			"name": "practice gdb",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder:leetcode}/practice_code/output_gtest",
+			"args": [],
+			"stopAtEntry": false,
+			"targetArchitecture": "arm64",
+			"cwd": "${workspaceFolder:leetcode}/practice_code/",
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "lldb",	// sudo DevToolsSecurity --enable
+			"showDisplayString": true,
+			// breakpoint 중첩되는것 제거
+			"sourceFileMap": {
+				"${workspaceFolder:leetcode}": {
+					"editorPath": "${workspaceFolder:leetcode}",
+					"useForBreakpoints": "true"
+				},
+			},
+			"preLaunchTask": "prelaunch_leetcode",
+		},
+
+	],
+}

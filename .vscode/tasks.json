@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "prelaunch_leetcode",
+			"command": [
+				"${workspaceFolder:leetcode}/practice_code/build_gtest.sh"
+			],
+			"args": [
+				"fullcode.cpp"
+			],
+			"options": {
+				"cwd": "${workspaceFolder:leetcode}/practice_code"
+			},
+			"problemMatcher": [
+
+			],
+			"presentation": {
+				// "revealProblems": "onProblem",
+				"close": true
+			}
+		},
+	],
+
+}

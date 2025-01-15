@@ -1,0 +1,27 @@
+{
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "*.erd": "json",
+        "*.vuerd": "json",
+        "*.rej": "diff",
+        "*.h": "c",
+        "*.c": "c",
+        "*.y": "c",
+        "*.py": "python",
+        "*.log": "log",
+        "*.log.*": "log",
+        "passwd": "shellscript",
+        ".aliases": "shellscript",
+        "ios": "cpp",
+        "string": "cpp",
+        "iostream": "cpp",
+        "iomanip": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "cmath": "cpp"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "folders": [
+        {
+            "name": "leetcode",
+            "path": "../"
+        }
+    ],
+    "settings": {
+
+        "testMate.cpp.log.logSentry": "disable_3",
+        "testMate.cpp.test.advancedExecutables": [
+            {
+                "cwd": "${absDirpath}",
+                "pattern": "*practice_code/output_gtest*",
+                "executionWrapper": {
+                    "path": "/bin/bash",
+                    "args": [
+                        "-c",
+                        "\"${cmd}\" ${argsStr} 2>&1"
+                    ]
+                },
+                "runTask": {
+                    "before": [
+                        "prelaunch_leetcode"
+                    ],
+                }
+            },
+        ],
+        "files.associations": {
+            "*.sqlbook": "sql",
+            "*.ndjson": "jsonl",
+            "*.dbclient-js": "javascript",
+            "*.erd": "json",
+            "*.vuerd": "json",
+            "*.rej": "diff",
+            "*.h": "c",
+            "*.c": "c",
+            "*.y": "c",
+            "*.py": "python",
+            "*.log": "log",
+            "*.log.*": "log",
+            "passwd": "shellscript",
+            ".aliases": "shellscript",
+            "vector": "cpp",
+            "map": "cpp"
+        }
+
+    }
+}
