@@ -42,7 +42,12 @@
             "passwd": "shellscript",
             ".aliases": "shellscript",
             "vector": "cpp",
-            "map": "cpp"
+            "map": "cpp",
+            "algorithm": "cpp",
+            "string": "cpp",
+            "iostream": "cpp",
+            "list": "cpp",
+            "iomanip": "cpp"
         }
 
     }
