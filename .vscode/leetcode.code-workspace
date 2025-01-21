@@ -47,7 +47,8 @@
             "string": "cpp",
             "iostream": "cpp",
             "list": "cpp",
-            "iomanip": "cpp"
+            "iomanip": "cpp",
+            "array": "cpp"
         }
 
     }
