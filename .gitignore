@@ -8,6 +8,11 @@ practice_code/fullcode.*
 practice_code/todo.md
 practice_code/output_gtest
 practice_code/output_gtest.dSYM/
+practice_code/*.c
+practice_code/*.cpp
+practice_code/*.py
+practice_code/*.java
+practice_code/*.class
 
 
 # python cache dir
