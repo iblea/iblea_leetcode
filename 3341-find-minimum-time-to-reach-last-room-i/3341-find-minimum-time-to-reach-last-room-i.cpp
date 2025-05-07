@@ -9,9 +9,23 @@ public:
 
         vector<pair<int, int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
-        priority_queue<array<int, 3>, vector<array<int, 3>>, greater<array<int, 3>>> pq;
+        // priority_queue<array<int, 3>, vector<array<int, 3>>, greater<array<int, 3>>> pq;
+
+        // 사용자 정의 비교자 (custom priority queue)
+        auto comp = [](const array<int, 3>& a, const array<int, 3>& b) {
+            if (a[0] != b[0]) {
+                return a[0] > b[0];
+            }
+            if (a[1] != b[1]) {
+                return a[1] > b[1];
+            }
+            return a[2] > b[2];
+        };
+        priority_queue<array<int, 3>, vector<array<int, 3>>, decltype(comp)> pq(comp);
+
         vector<vector<bool>> visited(n, vector<bool>(m, false));
 
+        // { time, x, y }
         pq.push({0, 0, 0});
         while (!pq.empty()) {
             auto [time, x, y] = pq.top();
